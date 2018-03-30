@@ -12,12 +12,15 @@ public class UserProfile {
     private final String imageUrl;
     private final String name;
     private final int age;
+    private final int percentage;
 
-    public UserProfile(final int id, final String imageUrl, final String name, final int age) {
+    public UserProfile(final int id, final String imageUrl, final String name,
+                       final int age, final int percentage) {
         this.id = id;
         this.imageUrl = imageUrl;
         this.name = name;
         this.age = age;
+        this.percentage = percentage;
     }
 
     public String getImageUrl() {
@@ -32,9 +35,13 @@ public class UserProfile {
         return age;
     }
 
+    public int getPercentage() {
+        return percentage;
+    }
+
     public static UserProfile from(final RemoteProfile profile) {
         int age = getAge(profile.age);
-        return new UserProfile(profile.id, profile.cover, profile.name, age);
+        return new UserProfile(profile.id, profile.cover, profile.name, age, PercentageAllocator.get());
     }
 
     private static int getAge(final String age) {

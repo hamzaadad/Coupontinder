@@ -26,11 +26,15 @@ public class ProfileAdapter extends ArrayAdapter<UserProfile> {
     private final Context mContext;
     private UserProfile[] mProfiles;
     private ProfileListener mListener;
+    private int currentProfileIndex;
+    private int totalProfiles;
 
     public ProfileAdapter(final Context context, final int resource, final UserProfile[] objects) {
         super(context, resource, objects);
         mContext = context;
         mProfiles = objects;
+        totalProfiles = mProfiles.length;
+        currentProfileIndex = totalProfiles != 0 ? 1 : 0;
     }
 
     @Override
@@ -56,8 +60,26 @@ public class ProfileAdapter extends ArrayAdapter<UserProfile> {
             }
             TextView nameTextView = (TextView) root.findViewById(R.id.profile_info);
             ImageView imageView = (ImageView) root.findViewById(R.id.image);
+            ImageView thumbsUp = (ImageView) root.findViewById(R.id.thumb_up);
+            ImageView thumbsDown = (ImageView) root.findViewById(R.id.thumbs_down);
             nameTextView.setText(String.format(Locale.getDefault(), NAME_AND_AGE_STRING_FORMAT, profile.getName(),
                     profile.getAge()));
+
+            thumbsUp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null)
+                        mListener.onThumbsUp();
+                }
+            });
+
+            thumbsDown.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null)
+                        mListener.onThumbsDown();
+                }
+            });
 
             Glide.with(mContext).load(profile.getImageUrl()).centerCrop().crossFade().into(imageView);
         }
@@ -76,7 +98,8 @@ public class ProfileAdapter extends ArrayAdapter<UserProfile> {
         }
         if (mListener != null) {
             if (mProfiles.length > 0) {
-                mListener.onProfileRemoved(removedProfile);
+                mListener.onProfileRemoved(removedProfile, ++currentProfileIndex, totalProfiles,
+                        mProfiles[0].getPercentage());
             } else {
                 mListener.onEmptyList();
             }
@@ -84,10 +107,21 @@ public class ProfileAdapter extends ArrayAdapter<UserProfile> {
         notifyDataSetChanged();
     }
 
+    public int getCurrentProfileIndex() {
+        return currentProfileIndex;
+    }
+
+    public int getCurrentProfilePercentage() {
+        return currentProfileIndex != 0 ? mProfiles[0].getPercentage() : -1;
+    }
+
     public interface ProfileListener {
 
-        void onProfileRemoved(@NonNull final UserProfile profile);
+        void onProfileRemoved(@NonNull final UserProfile profile, int newPosition,
+                              int total, int newPercentage);
 
         void onEmptyList();
+        void onThumbsUp();
+        void onThumbsDown();
     }
 }

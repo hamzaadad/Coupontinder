@@ -21,6 +21,10 @@ public interface VotingActivityView {
 
     void showMatch(UserProfile profile);
 
+    void showNewProfilePosition(int position, int total);
+
+    void updatePercentage(int percentage);
+
     int cardsLeft();
 
     void showOutOfVotes();

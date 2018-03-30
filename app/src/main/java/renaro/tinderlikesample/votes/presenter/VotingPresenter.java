@@ -22,6 +22,8 @@ public class VotingPresenter extends BasePresenter {
     private final TaskExecutor mTaskExecutor;
     private final ProfileBO mProfileBO;
     private UserProfile mLastSeenProfile;
+    private int newProfileIndex;
+    private int totalProfiles;
 
     public VotingPresenter(@NonNull final VotingActivityView view, @NonNull final TaskExecutor taskExecutor,
                            @NonNull final ProfileBO profileBO) {
@@ -49,8 +51,12 @@ public class VotingPresenter extends BasePresenter {
         mView.showPositiveVote();
     }
 
-    public void onProfileRemoved(final UserProfile profile) {
+    public void onProfileRemoved(final UserProfile profile, int newPosition, int total, int percentage) {
         mLastSeenProfile = profile;
+        newProfileIndex = newPosition;
+        totalProfiles = total;
+        mView.showNewProfilePosition(newPosition, total);
+        mView.updatePercentage(percentage);
     }
 
     public void onSlideProfileToLeft() {

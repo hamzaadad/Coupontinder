@@ -4,11 +4,14 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.List;
+import java.util.Locale;
 
 import renaro.tinderlikesample.R;
 import renaro.tinderlikesample.UserProfile;
@@ -25,6 +28,9 @@ public class VotingActivity extends BaseActivity<VotingPresenter>
     private SwipeFlingAdapterView mSwipeList;
     private ProfileAdapter mAdapter;
     private MatchDialog mMatchDialog;
+    private TextView paginationLabel;
+    private TextView worksPercentage;
+    private RelativeLayout dot;
 
     @NonNull
     @Override
@@ -36,15 +42,13 @@ public class VotingActivity extends BaseActivity<VotingPresenter>
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voting);
-        final View heartIcon = findViewById(R.id.heart_icon);
-        final View brokenHeartIcon = findViewById(R.id.broken_hear_icon);
 
         loading = findViewById(R.id.loading);
+        dot = (RelativeLayout) findViewById(R.id.dot);
         mSwipeList = (SwipeFlingAdapterView) findViewById(R.id.swipe_list);
+        paginationLabel = (TextView) findViewById(R.id.pagination_label);
+        worksPercentage = (TextView) findViewById(R.id.works_percentage);
         mSwipeList.setFlingListener(new SwipeListener());
-        OnVoteButtonsClicked onVoteButtonsClicked = new OnVoteButtonsClicked();
-        heartIcon.setOnClickListener(onVoteButtonsClicked);
-        brokenHeartIcon.setOnClickListener(onVoteButtonsClicked);
     }
 
     @Override
@@ -64,6 +68,9 @@ public class VotingActivity extends BaseActivity<VotingPresenter>
         mAdapter.setListener(this);
         mSwipeList.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
+
+        setPaginationIndex(mAdapter.getCurrentProfileIndex(), profiles.size());
+        updatePercentage(mAdapter.getCurrentProfilePercentage());
     }
 
     @Override
@@ -84,6 +91,31 @@ public class VotingActivity extends BaseActivity<VotingPresenter>
     }
 
     @Override
+    public void showNewProfilePosition(int position, int total) {
+        setPaginationIndex(position, total);
+    }
+
+    @Override
+    public void updatePercentage(int percentage) {
+        if (percentage < 0)
+            Toast.makeText(this, "Profile has invalid percentage...", Toast.LENGTH_SHORT).show();
+        else {
+            if (percentage < 50)
+                dot.setBackgroundResource(R.drawable.red_circle);
+            else if (percentage < 80)
+                dot.setBackgroundResource(R.drawable.orange_circle);
+            else
+                dot.setBackgroundResource(R.drawable.green_circle);
+
+            worksPercentage.setText(percentage + "% works");
+        }
+    }
+
+    private void setPaginationIndex(int position, int total) {
+        paginationLabel.setText(String.format(Locale.getDefault(), "%d of %d", position, total));
+    }
+
+    @Override
     public int cardsLeft() {
         return mSwipeList.getChildCount();
     }
@@ -94,13 +126,23 @@ public class VotingActivity extends BaseActivity<VotingPresenter>
     }
 
     @Override
-    public void onProfileRemoved(@NonNull final UserProfile profile) {
-        mPresenter.onProfileRemoved(profile);
+    public void onProfileRemoved(@NonNull final UserProfile profile, int newPosition, int total, int percentage) {
+        mPresenter.onProfileRemoved(profile, newPosition, total, percentage);
     }
 
     @Override
     public void onEmptyList() {
         mPresenter.onEmptyList();
+    }
+
+    @Override
+    public void onThumbsUp() {
+        mPresenter.onPositiveButtonClicked();
+    }
+
+    @Override
+    public void onThumbsDown() {
+        mPresenter.onNegativeButtonClicked();
     }
 
     @Override
@@ -133,20 +175,6 @@ public class VotingActivity extends BaseActivity<VotingPresenter>
 
         @Override
         public void onScroll(final float v) {
-        }
-    }
-
-    private class OnVoteButtonsClicked implements View.OnClickListener {
-        @Override
-        public void onClick(final View view) {
-            switch (view.getId()) {
-                case R.id.heart_icon:
-                    mPresenter.onPositiveButtonClicked();
-                    break;
-                case R.id.broken_hear_icon:
-                    mPresenter.onNegativeButtonClicked();
-                    break;
-            }
         }
     }
 }

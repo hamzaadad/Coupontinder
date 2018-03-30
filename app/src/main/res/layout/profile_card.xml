@@ -35,9 +35,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:textSize="15sp"
+                    android:textColor="#494949"
+                    android:textSize="30sp"
                     android:fontFamily="sans-serif-medium"
-                    tools:text="Luiza Silva , 32 anos"/>
+                    tools:text="465465FR"/>
 
             </LinearLayout>
 
@@ -51,20 +52,22 @@
 
 
                 <ImageView
-                    android:id="@+id/broken_hear_icon"
+                    android:id="@+id/thumbs_down"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:padding="4dp"
                     android:layout_weight="1"
                     android:background="?attr/selectableItemBackground"
-                    android:src="@drawable/broken_heart" />
+                    android:src="@drawable/thumbs_down" />
 
                 <ImageView
-                    android:id="@+id/heart_icon"
+                    android:id="@+id/thumb_up"
+                    android:padding="4dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="?attr/selectableItemBackground"
-                    android:src="@drawable/heart" />
+                    android:src="@drawable/thumbs_up" />
 
 
             </LinearLayout>

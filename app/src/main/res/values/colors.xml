@@ -10,6 +10,14 @@
     <color name="card_shadow_1">#d4d4d4</color>
     <color name="card_shadow_2">#dddddd</color>
     <color name="card_detailing">#eee</color>
-
-
+    <color name="home_screen_bottom_gradient">#405e84</color>
+    <color name="home_screen_top_gradient">#44497c</color>
+    <color name="header_text_color">#b6b6b8</color>
+    <color name="light_grey">#93a3bb</color>
+    <color name="works_percentage_color">#e7e7e7</color>
+    <color name="dark_grey">#6f86a4</color>
+    <color name="light_green">#84ff8f</color>
+    <color name="light_orange">#FF9800</color>
+    <color name="light_red">#F44336</color>
+    <color name="pagination_text_color">#adafb2</color>
 </resources>

@@ -8,6 +8,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.List;
@@ -24,6 +29,8 @@ import renaro.tinderlikesample.votes.presenter.VotingPresenter;
 public class VotingActivity extends BaseActivity<VotingPresenter>
         implements VotingActivityView, ProfileAdapter.ProfileListener {
 
+    private InterstitialAd interstitialAd;
+
     private View loading;
     private SwipeFlingAdapterView mSwipeList;
     private ProfileAdapter mAdapter;
@@ -31,6 +38,7 @@ public class VotingActivity extends BaseActivity<VotingPresenter>
     private TextView paginationLabel;
     private TextView worksPercentage;
     private RelativeLayout dot;
+    private AdView adView;
 
     @NonNull
     @Override
@@ -43,12 +51,36 @@ public class VotingActivity extends BaseActivity<VotingPresenter>
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voting);
 
+        MobileAds.initialize(this, getString(R.string.APP_ID));
+        interstitialAd = new InterstitialAd(this);
+        interstitialAd.setAdUnitId(getString(R.string.interstitial_test_add_unit_id));
+        interstitialAd.loadAd(new AdRequest.Builder().build());
+        interstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                interstitialAd.loadAd(new AdRequest.Builder().build());
+            }
+        });
+
+        adView = (AdView) findViewById(R.id.adView);
         loading = findViewById(R.id.loading);
         dot = (RelativeLayout) findViewById(R.id.dot);
         mSwipeList = (SwipeFlingAdapterView) findViewById(R.id.swipe_list);
         paginationLabel = (TextView) findViewById(R.id.pagination_label);
         worksPercentage = (TextView) findViewById(R.id.works_percentage);
         mSwipeList.setFlingListener(new SwipeListener());
+
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("34E190ADD5DF0B4497AC9DF5A2E9708D").build();
+        adView.loadAd(adRequest);
+        adView.setAdListener(new AdListener(){
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                if(interstitialAd.isLoaded()){
+                    interstitialAd.show();
+                }
+            }
+        });
     }
 
     @Override
@@ -85,9 +117,9 @@ public class VotingActivity extends BaseActivity<VotingPresenter>
 
     @Override
     public void showMatch(final UserProfile profile) {
-        mMatchDialog = new MatchDialog(this);
-        mMatchDialog.setProfile(profile);
-        mMatchDialog.show();
+        if (interstitialAd.isLoaded()) interstitialAd.show();
+        //else
+            //Toast.makeText(this, "Ad isn't loaded yet.", Toast.LENGTH_LONG).show();
     }
 
     @Override

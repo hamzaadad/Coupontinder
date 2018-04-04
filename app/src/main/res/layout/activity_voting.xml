@@ -77,8 +77,8 @@
                     android:id="@+id/dot"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_margin="16dp"
                     android:layout_centerVertical="true"
+                    android:layout_margin="16dp"
                     tools:background="@drawable/green_circle" />
 
                 <TextView
@@ -86,32 +86,35 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_centerVertical="true"
-                    android:gravity="center"
-                    android:textSize="24sp"
-                    android:background="@color/dark_grey"
-                    android:padding="12dp"
                     android:layout_toRightOf="@id/dot"
+                    android:background="@color/dark_grey"
+                    android:gravity="center"
+                    android:padding="12dp"
                     android:text="Loading..."
-                    android:textColor="@color/works_percentage_color" />
+                    android:textColor="@color/works_percentage_color"
+                    android:textSize="24sp" />
             </RelativeLayout>
 
             <TextView
                 android:id="@+id/pagination_label"
-                android:text="Loading..."
-                android:padding="16dp"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:textColor="@color/pagination_text_color"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Loading..."
+                android:textColor="@color/pagination_text_color"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
-        <RelativeLayout
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="10"
-            android:background="@android:color/white" />
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_test_add_unit_id"/>
+
     </LinearLayout>
 </RelativeLayout>

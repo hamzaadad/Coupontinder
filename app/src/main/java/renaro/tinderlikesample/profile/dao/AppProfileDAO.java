@@ -62,6 +62,6 @@ public class AppProfileDAO extends ProfileDAO {
 
     @Override
     public boolean voteProfile(final UserProfile profile, final boolean vote) {
-        return profile.getId() == SOME_RANDOM_ID && vote;
+        return vote && (profile.getId() % 3 == 0) ;
     }
 }

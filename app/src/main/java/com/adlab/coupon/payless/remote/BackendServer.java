@@ -1,8 +1,8 @@
-package renaro.adlab.remote;
+package com.adlab.coupon.payless.remote;
 
 import java.util.List;
 
-import renaro.adlab.model.FetchProfileResponse;
+import com.adlab.coupon.payless.model.FetchProfileResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_drawable"
-    tools:context="renaro.adlab.votes.view.VotingActivity">
+    tools:context="com.adlab.coupon.payless.votes.view.VotingActivity">
 
     <ProgressBar
         android:id="@+id/loading"
@@ -33,7 +33,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/brand" />
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/header_label"
@@ -41,8 +41,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/brand_logo"
                 android:layout_centerHorizontal="true"
+                android:gravity="center"
                 android:padding="8dp"
-                android:text="Lorem ipsum Lorem ipsum"
+                android:text="Low price shoes for Women, Men and Kids, including, boots, sandals, dress and athletic shoes. Free Shipping +$25"
                 android:textColor="@color/header_text_color" />
 
         </RelativeLayout>

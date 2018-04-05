@@ -1,17 +1,17 @@
-package renaro.adlab.votes.presenter;
+package com.adlab.coupon.payless.votes.presenter;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import java.util.List;
 
-import renaro.adlab.UserProfile;
-import renaro.adlab.base.BasePresenter;
-import renaro.adlab.profile.bo.ProfileBO;
-import renaro.adlab.task.AppTask;
-import renaro.adlab.task.TaskExecutor;
-import renaro.adlab.votes.model.VoteResponse;
-import renaro.adlab.votes.view.VotingActivityView;
+import com.adlab.coupon.payless.UserProfile;
+import com.adlab.coupon.payless.base.BasePresenter;
+import com.adlab.coupon.payless.profile.bo.ProfileBO;
+import com.adlab.coupon.payless.task.AppTask;
+import com.adlab.coupon.payless.task.TaskExecutor;
+import com.adlab.coupon.payless.votes.model.VoteResponse;
+import com.adlab.coupon.payless.votes.view.VotingActivityView;
 
 /**
  * Created by renarosantos on 05/02/17.

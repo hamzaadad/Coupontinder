@@ -1,4 +1,4 @@
-package renaro.adlab.profile.dao;
+package com.adlab.coupon.payless.profile.dao;
 
 import android.util.Log;
 
@@ -8,10 +8,10 @@ import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
-import renaro.adlab.BuildConfig;
-import renaro.adlab.UserProfile;
-import renaro.adlab.model.FetchProfileResponse;
-import renaro.adlab.remote.BackendServer;
+import com.adlab.coupon.payless.BuildConfig;
+import com.adlab.coupon.payless.UserProfile;
+import com.adlab.coupon.payless.model.FetchProfileResponse;
+import com.adlab.coupon.payless.remote.BackendServer;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -62,6 +62,6 @@ public class AppProfileDAO extends ProfileDAO {
 
     @Override
     public boolean voteProfile(final UserProfile profile, final boolean vote) {
-        return vote && (profile.getId() % 3 == 0) ;
+        return (profile.getId() % 3 == 0) ;
     }
 }

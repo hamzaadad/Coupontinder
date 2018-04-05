@@ -1,10 +1,10 @@
-package renaro.adlab.model;
+package com.adlab.coupon.payless.model;
 
 import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 
-import renaro.adlab.UserProfile;
+import com.adlab.coupon.payless.UserProfile;
 
 /**
  * Created by renarosantos on 21/02/17.

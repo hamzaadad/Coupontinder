@@ -1,6 +1,6 @@
-package renaro.adlab;
+package com.adlab.coupon.payless;
 
-import renaro.adlab.model.RemoteProfile;
+import com.adlab.coupon.payless.model.RemoteProfile;
 
 /**
  * Created by renarosantos on 05/02/17.

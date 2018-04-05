@@ -1,9 +1,9 @@
-package renaro.adlab.profile.dao;
+package com.adlab.coupon.payless.profile.dao;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import renaro.adlab.UserProfile;
+import com.adlab.coupon.payless.UserProfile;
 
 /**
  * Created by renarosantos1 on 30/05/17.

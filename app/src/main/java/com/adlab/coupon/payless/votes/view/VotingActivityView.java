@@ -1,8 +1,8 @@
-package renaro.adlab.votes.view;
+package com.adlab.coupon.payless.votes.view;
 
 import java.util.List;
 
-import renaro.adlab.UserProfile;
+import com.adlab.coupon.payless.UserProfile;
 
 /**
  * Created by renarosantos on 05/02/17.

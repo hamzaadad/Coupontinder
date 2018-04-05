@@ -1,4 +1,4 @@
-package renaro.adlab;
+package com.adlab.coupon.payless;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,4 +1,4 @@
-package renaro.adlab.votes.model;
+package com.adlab.coupon.payless.votes.model;
 
 /**
  * Created by Renaro Santos on 25/05/17.

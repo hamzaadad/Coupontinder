@@ -1,4 +1,4 @@
-package renaro.adlab.votes.view;
+package com.adlab.coupon.payless.votes.view;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -18,13 +18,13 @@ import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 import java.util.List;
 import java.util.Locale;
 
-import renaro.adlab.R;
-import renaro.adlab.UserProfile;
-import renaro.adlab.base.BaseActivity;
-import renaro.adlab.profile.bo.ProfileBO;
-import renaro.adlab.profile.dao.AppProfileDAO;
-import renaro.adlab.task.AppTaskExecutor;
-import renaro.adlab.votes.presenter.VotingPresenter;
+import com.adlab.coupon.payless.R;
+import com.adlab.coupon.payless.UserProfile;
+import com.adlab.coupon.payless.base.BaseActivity;
+import com.adlab.coupon.payless.profile.bo.ProfileBO;
+import com.adlab.coupon.payless.profile.dao.AppProfileDAO;
+import com.adlab.coupon.payless.task.AppTaskExecutor;
+import com.adlab.coupon.payless.votes.presenter.VotingPresenter;
 
 public class VotingActivity extends BaseActivity<VotingPresenter>
         implements VotingActivityView, ProfileAdapter.ProfileListener {
@@ -139,7 +139,7 @@ public class VotingActivity extends BaseActivity<VotingPresenter>
             else
                 dot.setBackgroundResource(R.drawable.green_circle);
 
-            worksPercentage.setText(percentage + "% works");
+            worksPercentage.setText(percentage + "%");
         }
     }
 

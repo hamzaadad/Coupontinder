@@ -1,4 +1,4 @@
-package renaro.adlab;
+package com.adlab.coupon.payless;
 
 import org.junit.Test;
 

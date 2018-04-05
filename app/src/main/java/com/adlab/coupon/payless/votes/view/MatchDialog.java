@@ -1,4 +1,4 @@
-package renaro.adlab.votes.view;
+package com.adlab.coupon.payless.votes.view;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -11,8 +11,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.Locale;
 
-import renaro.adlab.R;
-import renaro.adlab.UserProfile;
+import com.adlab.coupon.payless.R;
+import com.adlab.coupon.payless.UserProfile;
 
 /**
  * Created by renarosantos on 06/03/17.

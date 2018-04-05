@@ -1,13 +1,13 @@
-package renaro.adlab.profile.bo;
+package com.adlab.coupon.payless.profile.bo;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.WorkerThread;
 
 import java.util.List;
 
-import renaro.adlab.UserProfile;
-import renaro.adlab.profile.dao.ProfileDAO;
-import renaro.adlab.votes.model.VoteResponse;
+import com.adlab.coupon.payless.UserProfile;
+import com.adlab.coupon.payless.profile.dao.ProfileDAO;
+import com.adlab.coupon.payless.votes.model.VoteResponse;
 
 /**
  * Created by renarosantos on 21/02/17.

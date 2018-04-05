@@ -1,4 +1,7 @@
-package renaro.adlab.model;
+package com.adlab.coupon.payless.model;
+
+import java.security.SecureRandom;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by renarosantos on 21/02/17.
@@ -12,7 +15,9 @@ public class RemoteProfile {
 
     public RemoteProfile(final Integer id, final String name, final String age, final String cover) {
         this.id = id;
-        this.name = name;
+
+
+        this.name = Long.toHexString(Double.doubleToLongBits(Math.random()));
         this.age = age;
         this.cover = cover;
     }

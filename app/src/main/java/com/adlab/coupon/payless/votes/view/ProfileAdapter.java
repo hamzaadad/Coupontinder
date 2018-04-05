@@ -1,4 +1,4 @@
-package renaro.adlab.votes.view;
+package com.adlab.coupon.payless.votes.view;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -13,9 +13,10 @@ import com.bumptech.glide.Glide;
 
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.Random;
 
-import renaro.adlab.R;
-import renaro.adlab.UserProfile;
+import com.adlab.coupon.payless.R;
+import com.adlab.coupon.payless.UserProfile;
 
 /**
  * Created by renarosantos on 21/02/17.
@@ -62,9 +63,18 @@ public class ProfileAdapter extends ArrayAdapter<UserProfile> {
             ImageView imageView = (ImageView) root.findViewById(R.id.image);
             ImageView thumbsUp = (ImageView) root.findViewById(R.id.thumb_up);
             ImageView thumbsDown = (ImageView) root.findViewById(R.id.thumbs_down);
-            nameTextView.setText(String.format(Locale.getDefault(), NAME_AND_AGE_STRING_FORMAT, profile.getName(),
-                    profile.getAge()));
+            String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+                StringBuilder salt = new StringBuilder();
+                Random rnd = new Random();
+                while (salt.length() < 9) { // length of the random string.
+                    int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+                    salt.append(SALTCHARS.charAt(index));
+                }
+                String saltStr = salt.toString();
 
+            //nameTextView.setText(String.format(Locale.getDefault(), NAME_AND_AGE_STRING_FORMAT, profile.getName(),
+            //        profile.getAge()));
+            nameTextView.setText(saltStr.toUpperCase());
             thumbsUp.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

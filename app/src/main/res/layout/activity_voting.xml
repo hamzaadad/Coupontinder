@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_voting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_drawable"
+    tools:context="renaro.adlab.votes.view.VotingActivity">
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="100">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="30"
+            android:gravity="center"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/brand_logo"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/brand" />
+
+            <TextView
+                android:id="@+id/header_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/brand_logo"
+                android:layout_centerHorizontal="true"
+                android:padding="8dp"
+                android:text="Lorem ipsum Lorem ipsum"
+                android:textColor="@color/header_text_color" />
+
+        </RelativeLayout>
+
+        <com.lorentzos.flingswipe.SwipeFlingAdapterView
+            android:id="@+id/swipe_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="34dp"
+            android:layout_weight="40"
+            android:padding="16dp"
+            app:max_visible="4"
+            app:min_adapter_stack="6"
+            app:rotation_degrees="16" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="20"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:background="@color/light_grey"
+                android:gravity="center">
+
+                <RelativeLayout
+                    android:id="@+id/dot"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="16dp"
+                    tools:background="@drawable/green_circle" />
+
+                <TextView
+                    android:id="@+id/works_percentage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/dot"
+                    android:background="@color/dark_grey"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:text="Loading..."
+                    android:textColor="@color/works_percentage_color"
+                    android:textSize="24sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/pagination_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Loading..."
+                android:textColor="@color/pagination_text_color"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_test_add_unit_id"/>
+
+    </LinearLayout>
+</RelativeLayout>
